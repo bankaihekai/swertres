@@ -1,3 +1,15 @@
+#add-transaction-btn {
+  width: 200px;
+}
+
+.main-link.nav-link.active {
+  color: black !important;
+  font-weight: bold;
+}
+
+.main-link.nav-link:not(.active) {
+  color: grey !important;
+}
 
 .card {
     width: 100%;
@@ -10,4 +22,3 @@
       height: 100vh;
     }
   }
-  
