@@ -58,8 +58,8 @@
                 </div>
                 <input type="submit" class="btn btn-primary w-100" value="Login">
             </form>
-            <div class="text-right">
-                Don't have an account yet? Click <a href="register.php">here</a>
+            <div class="d-flex justify-content-end">
+                <span>Don't have an account yet? Click <a href="register.php">here</a></span>
             </div>
         </div>
         <div class="card-footer text-center">
