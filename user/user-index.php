@@ -14,6 +14,25 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
+<style>
+    /* .form-group{
+        display: flex;
+        align-items: center;
+    }
+
+    .form-group input,
+    .form-group select{
+        width: 150px;
+    }
+    
+    .form-group label{
+        width: 70px;
+    } */
+
+    .user-inputs {
+        width: 80px;
+    }
+</style>
 
 <body>
     <nav class="navbar navbar-expand-md bg-dark navbar-dark p-2">
@@ -72,7 +91,72 @@
                             <button id="add-transaction-btn" class="btn btn-primary">Add Transaction</button>
                         </section>
                         <section id="transaction-form" class="mt-3" style="display: none;">
-                            <p>agayyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy</p>
+
+                            <div class="card mt-4">
+                                <div class="card-header">
+                                    <div class="d-flex justify-content-end">
+                                        <div class="pe-2">
+                                            <a href="user-index.php" class="btn btn-primary">
+                                                <i class="fas fa-sync-alt"></i>
+                                            </a>
+                                        </div>
+                                        <div>
+                                            <a href="javascript:void(0)" class="add-more-formn btn btn-primary">Add Bet</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+
+                                    <form action="#" method="POST">
+                                        <div class="main-form mt-3 d-flex justify-content-center">
+                                            <table>
+                                                <thead>
+                                                    <tr class="text-center">
+                                                        <th clas="user-inputs">Number</th>
+                                                        <th clas="user-inputs">Type</th>
+                                                        <th clas="user-inputs">Amount</th>
+                                                        <th class="ps-3 user-inputs">Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="text" name="number[]" class="form-control user-inputs" required placeholder="###">
+                                                        </td>
+                                                        <td>
+                                                            <select name="type[]" class="form-control user-inputs" required>
+                                                                <option value="value1">Straight</option>
+                                                                <option value="value2">Ramble</option>
+                                                            </select>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="amount[]" class="form-control user-inputs" required placeholder="&#8369; 0.0">
+                                                        </td>
+                                                        <td>
+
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                                <tfoot>
+
+                                                </tfoot>
+                                            </table>
+                                        </div>
+
+                                        <div class="paste-new-forms"></div>
+
+                                        <hr>
+                                        <div class="d-flex justify-content-center">
+                                            <div class="">
+                                                <button type="submit" name="save_multiple_data" id="save_multiple_data" class="btn btn-success">Save Bet</button>
+                                            </div>
+                                        </div>
+
+                                    </form>
+
+                                </div>
+                            </div>
+
                         </section>
                     </div>
                 </div>
@@ -120,6 +204,8 @@
         </div>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
     <script>
         var addTransactionBtn = document.getElementById('add-transaction-btn');
         var transactionForm = document.getElementById('transaction-form');
@@ -136,6 +222,46 @@
                 addTransactionBtn.classList.add('btn-primary');
                 addTransactionBtn.textContent = 'Add Transaction';
             }
+        });
+
+        $(document).ready(function() {
+
+            $(document).on('click', '.remove-btn', function() {
+                $(this).closest('.main-form').remove();
+            });
+
+            $(document).on('click', '.add-more-form', function() {
+                $('.paste-new-forms').append('<div class="main-form mt-2 d-flex justify-content-center">\
+                                <table>\
+                                    <thead>\
+                                    </thead>\
+                                    <tbody>\
+                                        <tr>\
+                                            <td>\
+                                                <input type="text" name="number[]" class="form-control user-inputs" required placeholder="###">\
+                                            </td>\
+                                            <td>\
+                                                <select name="type[]" class="form-control user-inputs" required>\
+                                                    <option value="value1">Straight</option>\
+                                                    <option value="value2">Ramble</option>\
+                                                </select>\
+                                            </td>\
+                                            <td>\
+                                                <input type="text" name="amount[]" class="form-control user-inputs" required placeholder="&#8369; 0.0">\
+                                            </td>\
+                                            <td class="user-inputs d-flex justify-content-center">\
+                                                <button type="button" class="remove-btn btn btn-danger"><i class="fas fa-trash"></i></button>\
+                                            </td>\
+                                        </tr>\
+                                    </tbody>\
+                                    <tfoot>\
+                                    </tfoot>\
+                                </table>\
+                        </div>\
+                    </div>\
+                </div>');
+            });
+
         });
     </script>
 </body>
