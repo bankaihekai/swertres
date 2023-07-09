@@ -30,7 +30,7 @@
     } */
 
     .user-inputs {
-        width: 80px;
+        width: 85px;
     }
 </style>
 
@@ -49,9 +49,6 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link  text-center" href="#" data-bs-toggle="modal" data-bs-target="#homeModal">Cashier Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link  text-center" href="#">Transaction</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link  text-center" href="#">Logout</a>
@@ -94,14 +91,19 @@
 
                             <div class="card mt-4">
                                 <div class="card-header">
-                                    <div class="d-flex justify-content-end">
-                                        <div class="pe-2">
-                                            <a href="user-index.php" class="btn btn-primary">
-                                                <i class="fas fa-sync-alt"></i>
-                                            </a>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex align-items-center">
+                                            <span id="total-bets"><b>Total Bets:</b> 1</span>
                                         </div>
-                                        <div>
-                                            <a href="javascript:void(0)" class="add-more-formn btn btn-primary">Add Bet</a>
+                                        <div class="d-flex justify-content-end">
+                                            <div class="pe-2">
+                                                <a href="user-index.php" class="btn btn-primary">
+                                                    <i class="fas fa-sync-alt"></i>
+                                                </a>
+                                            </div>
+                                            <div>
+                                                <a href="javascript:void(0)" class="add-more-form btn btn-primary">Add Bet</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -110,41 +112,64 @@
                                     <form action="#" method="POST">
                                         <div class="main-form mt-3 d-flex justify-content-center">
                                             <table>
-                                                <thead>
-                                                    <tr class="text-center">
-                                                        <th clas="user-inputs">Number</th>
-                                                        <th clas="user-inputs">Type</th>
-                                                        <th clas="user-inputs">Amount</th>
-                                                        <th class="ps-3 user-inputs">Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <input type="text" name="number[]" class="form-control user-inputs" required placeholder="###">
-                                                        </td>
-                                                        <td>
-                                                            <select name="type[]" class="form-control user-inputs" required>
-                                                                <option value="value1">Straight</option>
-                                                                <option value="value2">Ramble</option>
-                                                            </select>
-                                                        </td>
-                                                        <td>
-                                                            <input type="text" name="amount[]" class="form-control user-inputs" required placeholder="&#8369; 0.0">
-                                                        </td>
-                                                        <td>
+                                                <tr>
+                                                    <th colspan="4" class="text-center">Customer Name</th>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <input type="text" name="firstname" class="form-control" placeholder="Firstname" required>
+                                                    </td>
+                                                    <td colspan="2">
+                                                        <input type="text" name="lastname" class="form-control" placeholder="Lastname" required>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="4">&nbsp;</td>
+                                                </tr>
+                                                <tr class="text-center">
+                                                    <th>Number</th>
+                                                    <th>Type</th>
+                                                    <th>Amount</th>
+                                                    <th>Remove</th>
+                                                </tr>
 
-                                                        </td>
-                                                    </tr>
+                                                <tr>
+                                                    <td class="border border-danger">
+                                                        <input type="text" name="number[]" class="border border-danger form-control" required placeholder="000-999" maxlength="3">
+                                                    </td>
+                                                    <td>
+                                                        <select name="type[]" class="form-control user-inputs" required>
+                                                            <option value="value1">Straight</option>
+                                                            <option value="value2">Ramble</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="amount[]" class="form-control" required placeholder="&#8369; 0.0">
+                                                    </td>
+                                                    <td>
+
+                                                    </td>
+                                                </tr>
+                                                <tbody class="paste-new-forms">
+
                                                 </tbody>
                                                 <tfoot>
-
+                                                    <tr>
+                                                        <td colspan="4">&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2" class="text-end">Total:</td>
+                                                        <td class="text-start">
+                                                            <span class="ps-3">
+                                                                &#8369; <b id="total-amount">0.00</b>
+                                                            </span>
+                                                        </td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
                                                 </tfoot>
+
                                             </table>
                                         </div>
-
-                                        <div class="paste-new-forms"></div>
-
                                         <hr>
                                         <div class="d-flex justify-content-center">
                                             <div class="">
@@ -171,10 +196,7 @@
             </div>
             <!-- Tabs content -->
         </div>
-
     </div>
-
-
 
     <div class="modal fade" id="homeModal" tabindex="-1" role="dialog" aria-labelledby="homeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -207,6 +229,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
     <script>
+        // Adding new table row for transaction
         var addTransactionBtn = document.getElementById('add-transaction-btn');
         var transactionForm = document.getElementById('transaction-form');
 
@@ -224,45 +247,78 @@
             }
         });
 
+        // new transaction row content
         $(document).ready(function() {
 
+
+            $(document).on('input', 'input[name="number[]"]', function() {
+                var value = $(this).val();
+                var isValid = /^\d{1,3}$/.test(value);
+                $(this).toggleClass('is-invalid', !isValid);
+            });
+
+            $(document).on('input', 'input[name="amount[]"]', function() {
+                var value = $(this).val();
+                var isValid = /^\d{1,3}$/.test(value);
+                $(this).toggleClass('is-invalid', !isValid);
+            });
+
+            // Initial count
+            var betCount = 1;
+
+            // Function to update the total bet count
+            function updateBetCount() {
+                var totalBets = $('.paste-new-forms tr').length + betCount;
+                $('#total-bets').html('<b>Total Bets:</b> ' + totalBets);
+            }
+
+            // Clicking remove button updates total bet and amount
             $(document).on('click', '.remove-btn', function() {
-                $(this).closest('.main-form').remove();
+                $(this).closest('tr').remove();
+                updateBetCount(); 
+                updateTotalAmount();
             });
 
             $(document).on('click', '.add-more-form', function() {
-                $('.paste-new-forms').append('<div class="main-form mt-2 d-flex justify-content-center">\
-                                <table>\
-                                    <thead>\
-                                    </thead>\
-                                    <tbody>\
-                                        <tr>\
-                                            <td>\
-                                                <input type="text" name="number[]" class="form-control user-inputs" required placeholder="###">\
-                                            </td>\
-                                            <td>\
-                                                <select name="type[]" class="form-control user-inputs" required>\
-                                                    <option value="value1">Straight</option>\
-                                                    <option value="value2">Ramble</option>\
-                                                </select>\
-                                            </td>\
-                                            <td>\
-                                                <input type="text" name="amount[]" class="form-control user-inputs" required placeholder="&#8369; 0.0">\
-                                            </td>\
-                                            <td class="user-inputs d-flex justify-content-center">\
-                                                <button type="button" class="remove-btn btn btn-danger"><i class="fas fa-trash"></i></button>\
-                                            </td>\
-                                        </tr>\
-                                    </tbody>\
-                                    <tfoot>\
-                                    </tfoot>\
-                                </table>\
-                        </div>\
-                    </div>\
-                </div>');
+                $('.paste-new-forms').append('<tr>\
+                                        <td>\
+                                            <input type="text" name="number[]" class="form-control" required placeholder="000-999">\
+                                        </td>\
+                                        <td>\
+                                            <select name="type[]" class="form-control user-inputs" required>\
+                                                <option value="value1">Straight</option>\
+                                                <option value="value2">Ramble</option>\
+                                            </select>\
+                                        </td>\
+                                        <td>\
+                                            <input type="text" name="amount[]" class="form-control" required placeholder="&#8369; 0.0">\
+                                        </td>\
+                                        <td class="d-flex justify-content-center">\
+                                            <button type="button" class="remove-btn btn btn-danger"><i class="fas fa-trash"></i></button>\
+                                        </td>\
+                                    </tr>');
+                updateBetCount();
             });
-
         });
+
+        function updateTotalAmount() {
+            var totalAmount = 0;
+            $('input[name="amount[]"]').each(function() {
+                var amountValue = parseFloat($(this).val().replace(/[^\d.-]/g, ''));
+                if (!isNaN(amountValue)) {
+                    totalAmount += amountValue;
+                }
+            });
+            $('#total-amount').text(totalAmount.toFixed(2));
+        }
+
+        $(document).on('input', 'input[name="amount[]"]', function() {
+            var value = $(this).val();
+            var isValid = /^\d{1,3}$/.test(value);
+            $(this).toggleClass('is-invalid', !isValid);
+            updateTotalAmount();
+        });
+
     </script>
 </body>
 
