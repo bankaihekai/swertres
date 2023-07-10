@@ -1,3 +1,7 @@
+.user-inputs {
+  width: 85px;
+}
+
 #add-transaction-btn,
 #save_multiple_data {
   width: 200px;
