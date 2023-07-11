@@ -37,9 +37,8 @@
             </ul>
         </div>
     </nav>
-    <br>
 
-    <div class="container">
+    <div class="container mt-2">
         <div class="">
             <!-- Tabs navs -->
             <ul class="nav nav-tabs mb-3 d-flex justify-content-between" id="ex-with-icons" role="tablist">
@@ -64,13 +63,14 @@
             <!-- Tabs content -->
             <div class="tab-content" id="ex-with-icons-content">
                 <div class="tab-pane fade show active" id="ex-with-icons-tabs-1" role="tabpanel" aria-labelledby="ex-with-icons-tab-1">
-                    <div>
-                        <section class="d-flex justify-content-center">
+                    <div class="">
+                        <!-- <section class="d-flex justify-content-center">
                             <button id="add-transaction-btn" class="btn btn-primary">Add Transaction</button>
-                        </section>
-                        <section id="transaction-form" class="mt-3" style="display: none;">
+                        </section> -->
+                        <!-- <section id="transaction-form" class="mt-3" style="display: none;"> -->
+                        <section id="transaction-form" class="mt-3">
 
-                            <div class="card mt-4">
+                            <div class="card mt-4 border-none">
                                 <div class="card-header">
                                     <div class="d-flex justify-content-between">
                                         <div class="d-flex align-items-center">
@@ -120,8 +120,8 @@
                                                     </td>
                                                     <td>
                                                         <select name="type[]" class="form-control user-inputs" required>
-                                                            <option value="value1">Straight</option>
-                                                            <option value="value2">Ramble</option>
+                                                            <option value="Straight">Straight</option>
+                                                            <option value="Ramble">Ramble</option>
                                                         </select>
                                                     </td>
                                                     <td>
@@ -139,10 +139,10 @@
                                                         <td colspan="4">&nbsp;</td>
                                                     </tr>
                                                     <tr>
-                                                        <td colspan="2" class="text-end">Total:</td>
+                                                        <td colspan="2" class="text-end">Total: &#8369;</td>
                                                         <td class="text-start">
-                                                            <span class="ps-3">
-                                                                &#8369; <b id="total-amount">0.00</b>
+                                                            <span class="d-flex align-items-center">
+                                                                <input type="text" class="form-control user-inputs" id="total-amount" name="total-amount" value="0.00" disabled>
                                                             </span>
                                                         </td>
                                                         <td>&nbsp;</td>

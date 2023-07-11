@@ -44,7 +44,7 @@
             <h3 class="text-center w-100">Login As</h3>
         </div>
         <div class="card-body mt-1">
-            <a href="user/login.php" class="btn btn-primary w-100">User</a>
+            <a href="user/login.php" class="btn btn-primary w-100">Cashier</a>
             <a href="admin/adminlogin.php" class="btn btn-primary w-100 mt-1">Admin</a>
         </div>
         <div class="card-footer text-center">

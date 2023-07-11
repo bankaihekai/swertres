@@ -9,29 +9,6 @@
     <link rel="shortcut icon" href="../img/logo.png" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
-
-    <style>
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        .animate-fade {
-            animation: fadeIn 1s ease-in-out;
-        }
-    </style>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var container = document.querySelector(".container");
-            container.classList.add("animate-fade");
-        });
-    </script>
 </head>
 
 <body>
@@ -40,7 +17,7 @@
             <div class="d-flex justify-content-center">
                 <img src="../img/logo.png" alt="" class="img-fluid mb-3" style="width:120px">
             </div>
-            <h3 class="text-center w-100">Admin Login</h3>
+            <h3 class="text-center w-100">Admin</h3>
         </div>
         <div class="card-body">
             <form action="loginval.php" method="post">
@@ -55,11 +32,9 @@
                 </div>
                 <input type="submit" name="submit" class="btn btn-primary w-100" value="Login">
             </form>
-            <?php
-            if (isset($_GET['message'])) {
-                echo $_GET['message'];
-            }
-            ?>
+            <div class="d-flex justify-content-end mt-2">
+                <a href="../index.php" class="text-decoration-none text-secondary">Back</a>
+            </div>
         </div>
         <div class="card-footer text-center">
             <small>&copy; Technical Myles</small>
